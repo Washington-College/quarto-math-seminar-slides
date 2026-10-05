@@ -240,5 +240,5 @@ Your personal repository set up by your instructor is already pre-configured to 
 ## 🤝 Need Advice or Support?
 
 * **Washington College Department of Mathematics & Computer Science**
-* **Dr. Shaun Poulsen**: [Book Office Hours](https://outlook.office.com/bookwithme/user/f78874d353574c549378ea832faf2ae7@washcoll.edu?anonymous&ep=plink)
+* **Dr. Dylan Poulsen**: [Book Office Hours](https://outlook.office.com/bookwithme/user/f78874d353574c549378ea832faf2ae7@washcoll.edu?anonymous&ep=plink)
 * Quarto Documentation: [quarto.org/docs/presentations/revealjs/](https://quarto.org/docs/presentations/revealjs/)

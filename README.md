@@ -91,4 +91,4 @@ For detailed explanations of:
 ## 🆘 Questions & Faculty Support
 
 * **Washington College Department of Mathematics & Computer Science**
-* **Dr. Shaun Poulsen**: [Schedule Office Hours](https://outlook.office.com/bookwithme/user/f78874d353574c549378ea832faf2ae7@washcoll.edu?anonymous&ep=plink)
+* **Dr. Dylan Poulsen**: [Schedule Office Hours](https://outlook.office.com/bookwithme/user/f78874d353574c549378ea832faf2ae7@washcoll.edu?anonymous&ep=plink)
