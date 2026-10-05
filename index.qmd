@@ -283,41 +283,40 @@ Demonstrate pressing 'C' now. Draw an arrow or circle around the Gaussian integr
 
 ---
 
-## Computational Visualization with Code
+## Asymptotic Analysis & Explicit Error Bounds
 
 <div class="slide-header">
-  <span>Computation & Reproducibility</span>
+  <span>Analytical Bounds</span>
   <span class="institution-tag">Washington College Mathematics</span>
 </div>
 
-In modern math seminars, code chunks allow you to demonstrate computational experiments directly inside your slides:
+How closely does the Logarithmic Integral $\text{Li}(x)$ track the true count $\pi(x)$?
 
-```python
-#| echo: true
-#| eval: false
-#| code-fold: show
-# Comparative approximation of prime counting function pi(x)
-import numpy as np
+::: {.thm-box}
+<div class="box-title"><span class="badge badge-wc">Theorem 3</span> Schoenfeld's Explicit Bound (1976)</div>
+Assuming the truth of the Riemann Hypothesis, for all $x \ge 2657$:
+$$|\pi(x) - \text{Li}(x)| < \frac{1}{8\pi} \sqrt{x} \ln(x)$$
+:::
 
-def prime_estimates(x_vals):
-    results = []
-    for x in x_vals:
-        li_approx = np.log(x)           # Crude density estimate
-        pnt_ratio = x / np.log(x)       # PNT leading term
-        results.append((x, pnt_ratio))
-    return results
+::: {.columns}
+::: {.column width="50%"}
+### Without RH (Unconditional)
+* **de la Vallée Poussin (1899)**:
+  $$|\pi(x) - \text{Li}(x)| = \mathcal{O}\left(x e^{-c\sqrt{\ln x}}\right)$$
+* Sub-exponential error bound.
+* Allows zeros anywhere within the critical strip.
+:::
 
-print("Computed asymptotic bounds for capstone seminar data.")
-```
-
-::: {.takeaway-card}
-<div class="takeaway-title">💡 Why Embed Code in Seminar Slides?</div>
-* **Reproducibility**: Your plots, simulations, and numerical verifications are live and reproducible.
-* **Code Folding**: The `code-fold: show` setting lets you tuck code away during the talk so equations take center stage!
+::: {.column width="50%"}
+### With RH (Conditional)
+* **Optimal Error**:
+  $$|\pi(x) - \text{Li}(x)| = \mathcal{O}\left(\sqrt{x} \ln x\right)$$
+* Square-root cancellation: primes distribute with pseudo-random statistical regularity!
+:::
 :::
 
 ::: {.notes}
-Explain to the audience that Quarto supports live execution of Python, R, Julia, and Observable JS directly in the presentation.
+Highlight the stark contrast: without RH, the error bound is relatively loose. With RH, the error is bounded essentially by the square root of x times log x, which is the gold standard in analytic number theory.
 :::
 
 ---

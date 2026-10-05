@@ -4,19 +4,13 @@
   "features": {
     "ghcr.io/rocker-org/devcontainer-features/quarto-cli:1": {
       "version": "latest",
-      "installTinyTex": true
-    },
-    "ghcr.io/devcontainers/features/python:1": {
-      "version": "3.11",
-      "installTools": true
+      "installTinyTex": false
     }
   },
   "customizations": {
     "vscode": {
       "extensions": [
-        "quarto.quarto",
-        "James-Yu.latex-workshop",
-        "yzhang.markdown-all-in-one"
+        "quarto.quarto"
       ],
       "settings": {
         "quarto.render.browser": "internal",
@@ -31,5 +25,5 @@
       "onAutoForward": "openBrowser"
     }
   },
-  "postCreateCommand": "echo '=== Washington College Math Seminar Codespace Ready! Run: quarto preview index.qmd ==='"
+  "postCreateCommand": "echo '=== Codespace Ready! Run: quarto preview index.qmd ==='"
 }

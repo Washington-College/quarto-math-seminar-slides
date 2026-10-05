@@ -11,7 +11,7 @@ This guide is designed for undergraduate students preparing their **Senior Capst
 You can build, edit, and preview your presentation using any of the following methods:
 
 ### Option 1: GitHub Codespaces (Zero Setup — Recommended!)
-You don't need to install Python, LaTeX, or Quarto on your personal laptop. You can edit everything inside your web browser:
+You don't need to install LaTeX, compilers, or Quarto on your personal laptop. You can edit everything inside your web browser:
 1. Click the green **Code** button at the top of this repository on GitHub.
 2. Select the **Codespaces** tab and click **Create codespace on main**.
 3. Once the Codespace finishes loading (takes about 60–90 seconds the first time), open the terminal and run:

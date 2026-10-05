@@ -12,7 +12,7 @@ A modern, web-based presentation template designed for undergraduate students at
 
 * 🏛️ **Washington College Aesthetic**: Custom styling matching official Washington College maroon (`#862633`) and gold accents.
 * 📐 **Math First**: Built-in styling for **Theorems**, **Definitions**, **Lemmas**, **Proofs** (with QED $\blacksquare$), and **Key Takeaways**.
-* ⚡ **Zero-Install Cloud Editing**: Full GitHub Codespaces support with Quarto, Python, and LaTeX pre-installed.
+* ⚡ **Fast Zero-Install Cloud Editing**: Lightweight GitHub Codespaces setup with Quarto pre-installed in seconds.
 * 🎙️ **Presenter Console**: Press <kbd>S</kbd> to unlock a synchronized dual-screen presenter view with live timer, preview, and private speaker notes.
 * ✏️ **Interactive Chalkboard**: Press <kbd>C</kbd> or click the pen icon to write or draw derivations live during your talk.
 * 🌐 **Automated GitHub Pages Publishing**: Push your changes to `main` and your slides update online automatically.
@@ -58,7 +58,7 @@ GitHub Pages is pre-configured to serve directly from the `/docs` folder on `mai
 | [`custom.scss`](custom.scss) | Washington College theme, custom theorem/definition callout boxes, typography, and badges. |
 | [`references.bib`](references.bib) | BibTeX bibliography containing classic math literature and sample annotations. |
 | [`apa.csl`](apa.csl) / [`ieee.csl`](ieee.csl) | Citation style files for switching between author-date and numeric references. |
-| [`.devcontainer/`](.devcontainer/) | Codespace definition pre-configured with Quarto, Python, and extensions. |
+| [`.devcontainer/`](.devcontainer/) | Lean Codespace definition pre-configured with Quarto and auto-preview. |
 | [`.github/workflows/`](.github/workflows/) | GitHub Actions workflow for automatic deployment to GitHub Pages. |
 
 ---
@@ -81,7 +81,7 @@ GitHub Pages is pre-configured to serve directly from the `/docs` folder on `mai
 For detailed explanations of:
 * How to structure a 20–25 minute capstone talk
 * LaTeX equation writing (matrices, piece-wise, summations, integrals)
-* How to add computational plots with Python or R
+* How to structure theorems, lemmas, definitions, and proof sketches
 * How to present effectively on seminar day
 
 👉 **Read the full [STUDENT_GUIDE.md](STUDENT_GUIDE.md)**
