@@ -36,13 +36,15 @@ quarto preview index.qmd
 Your presentation will open in the preview pane. Edits in `index.qmd` reload automatically on save!
 
 ### 4. Publish to the Web
-Commit and push your work:
+Render your slides and push:
 ```bash
+quarto render
 git add .
 git commit -m "Update my math seminar slides"
 git push origin main
 ```
-In your GitHub repository, go to **Settings** $\to$ **Pages** $\to$ choose **GitHub Actions** under *Source*. Your slides are now live on the internet!
+GitHub Pages is pre-configured to serve directly from the `/docs` folder on `main`. Your updated slides go live automatically within seconds!
+*(Alternatively, you can switch to GitHub Actions under **Settings** $\to$ **Pages** if you prefer automated CI builds).*
 
 ---
 

@@ -222,19 +222,23 @@ Press <kbd>O</kbd> to zoom out into an interactive grid of all your slides. Clic
 
 This repository includes a GitHub Actions workflow (`.github/workflows/publish.yml`) that builds and deploys your slides to the web whenever you push to GitHub!
 
-### Step 1: Push your changes
+### Step 1: Render and Push Your Changes
 ```bash
+quarto render
 git add .
 git commit -m "Update math seminar slides"
 git push origin main
 ```
 
-### Step 2: Enable GitHub Pages in your repository
-1. Go to your repository on GitHub.
-2. Click **Settings** (top tab) $\to$ **Pages** (in the left sidebar).
-3. Under **Build and deployment** $\to$ **Source**, choose **GitHub Actions**.
-4. That's it! GitHub Actions will automatically render your slides and publish them to:
-   `https://<your-username-or-org>.github.io/<your-repo-name>/`
+### Step 2: GitHub Pages is Live!
+By default, this repository template is pre-configured to publish directly from the `/docs` folder on your `main` branch. 
+* Your slides will be live at:
+  `https://<your-username-or-org>.github.io/<your-repo-name>/`
+* If creating a new repository from this template on your personal account, enable Pages once:
+  1. Go to your repository on GitHub.
+  2. Click **Settings** $\to$ **Pages** (in the left sidebar).
+  3. Under **Branch**, select `main` and folder `/docs`, then click **Save**.
+  *(Alternatively, you can choose GitHub Actions as the source if you prefer server-side CI rendering).*
 
 ---
 
