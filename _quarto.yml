@@ -1,0 +1,33 @@
+project:
+  type: default
+  output-dir: docs
+  render:
+    - index.qmd
+
+format:
+  revealjs:
+    theme: [default, custom.scss]
+    width: 1280
+    height: 720
+    margin: 0.08
+    slide-number: "c/t"
+    show-slide-number: all
+    chalkboard:
+      theme: whiteboard
+      boardmarker-width: 3
+      buttons: true
+    overview: true
+    transition: slide
+    background-transition: fade
+    controls: true
+    progress: true
+    history: true
+    touch: true
+    preview-links: auto
+    navigation-mode: linear
+    code-fold: show
+    code-copy: true
+    code-summary: "Show Code"
+    highlight-style: github
+    link-external-newwindow: true
+    html-math-method: mathjax

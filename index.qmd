@@ -1,0 +1,392 @@
+---
+title: "The Distribution of Primes & The Riemann Zeta Function"
+subtitle: "Senior Capstone Experience • Mathematics Seminar"
+author: "Alex Morgan '26"
+institute: "Department of Mathematics & Computer Science • Washington College"
+date: today
+bibliography: references.bib
+# csl: ieee.csl  # <-- Uncomment to switch to IEEE numeric citation style [1]
+# csl: apa.csl   # <-- Uncomment to switch to APA author-date citation style
+---
+
+## Seminar Roadmap {#roadmap}
+
+<div class="slide-header">
+  <span>Talk Structure</span>
+  <span class="institution-tag">Washington College Mathematics</span>
+</div>
+
+::: {.columns}
+::: {.column width="50%"}
+### Part I: Foundations & History
+1. **The Counting Problem**: How do primes thin out?
+2. **Conjectures of Gauss & Legendre**: The asymptotic guess
+3. **Euler's Bridge**: From arithmetic to analysis
+
+### Part II: The Zeta Function
+4. **Analytic Continuation**: Beyond $\Re(s) > 1$
+5. **The Critical Strip & Zeros**: Where arithmetic lives
+:::
+
+::: {.column width="50%"}
+### Part III: Main Results & Proof Idea
+6. **The Prime Number Theorem**: Stating the theorem
+7. **Proof Strategy**: Contour integration & zeros
+8. **The Riemann Hypothesis**: The million-dollar question
+
+### Part IV: Capstone Reflections
+9. **Computational Evidence**: Numerical visualization
+10. **Questions & Discussion**: Open inquiry
+:::
+:::
+
+::: {.notes}
+Welcome everyone! Today I am presenting my mathematics capstone seminar on the distribution of prime numbers and Riemann's zeta function. 
+Notice to the speaker: Use the roadmap slide to set audience expectations for timing (about 20-25 minutes).
+Press 'S' right now to view these presenter notes, elapsed time, and next-slide preview!
+:::
+
+---
+
+## The Prime Counting Function $\pi(x)$
+
+<div class="slide-header">
+  <span>Background & Definitions</span>
+  <span class="institution-tag">Washington College Mathematics</span>
+</div>
+
+::: {.def-box}
+<div class="box-title"><span class="badge badge-blue">Definition 1</span> Prime Counting Function</div>
+For any real number $x > 0$, the **prime counting function** $\pi(x)$ is defined as the number of primes less than or equal to $x$:
+$$\pi(x) := \#\{p \in \mathbb{P} : p \le x\} = \sum_{p \le x} 1$$
+:::
+
+::: {.columns}
+::: {.column width="55%"}
+* Primes appear erratic at local scales:
+  * Twin primes: $(11, 13)$, $(17, 19)$, $(101, 103)$
+  * Arbitrarily large prime gaps: for any $k \in \mathbb{N}$, the sequence $(k+1)! + 2, \dots, (k+1)! + k + 1$ contains no primes.
+* Yet at global scales, $\pi(x)$ exhibits remarkable smoothness.
+:::
+
+::: {.column width="45%"}
+| $x$ | $\pi(x)$ | $x / \ln(x)$ | Ratio |
+|:---|:---|:---|:---|
+| $10^2$ | 25 | 21.7 | 1.151 |
+| $10^4$ | 1,229 | 1,085.7 | 1.132 |
+| $10^6$ | 78,498 | 72,382.4 | 1.084 |
+| $10^8$ | 5,761,455 | 5,428,681.0 | 1.061 |
+| $10^{10}$ | 455,052,511 | 434,294,481.9 | 1.048 |
+:::
+:::
+
+::: {.notes}
+Highlight the dichotomy between the local unpredictability of primes and their global asymptotic regularity.
+Walk through the table: as $x$ increases by powers of 10, the ratio $\pi(x) / (x / \ln x)$ gets closer and closer to 1.
+:::
+
+---
+
+## The Prime Number Theorem (PNT)
+
+<div class="slide-header">
+  <span>Central Result</span>
+  <span class="institution-tag">Washington College Mathematics</span>
+</div>
+
+Conjectured independently by Legendre (1798) and Gauss (1792, age 15), and proven over a century later in 1896 by Jacques Hadamard [@hadamard1896] and Charles-Jean de la Vallée Poussin [@valleepoussin1896].
+
+::: {.thm-box}
+<div class="box-title"><span class="badge badge-wc">Theorem 1</span> The Prime Number Theorem (PNT)</div>
+As $x \to \infty$, the number of primes $\pi(x)$ satisfies the asymptotic law:
+$$\pi(x) \sim \frac{x}{\ln x} \quad \Longleftrightarrow \quad \lim_{x \to \infty} \frac{\pi(x)}{\frac{x}{\ln x}} = 1$$
+:::
+
+::: {.takeaway-card}
+<div class="takeaway-title">✨ Refinement via the Logarithmic Integral</div>
+Gauss realized that the density of primes near $t$ is approximately $1 / \ln(t)$, leading to the **Logarithmic Integral** approximation:
+$$\text{Li}(x) := \int_2^x \frac{dt}{\ln t} = \frac{x}{\ln x} + \frac{x}{(\ln x)^2} + \frac{2! x}{(\ln x)^3} + \cdots$$
+which approximates $\pi(x)$ far more accurately than $\frac{x}{\ln x}$ alone.
+:::
+
+::: {.notes}
+Make sure to explain the asymptotic notation: $\sim$ does NOT mean the difference goes to 0; it means their ratio approaches 1.
+Mention that proving this required inventing complex analysis techniques that didn't exist in Gauss's era.
+:::
+
+---
+
+## Euler's Bridge: From Arithmetic to Analysis
+
+<div class="slide-header">
+  <span>The Analytic Connection</span>
+  <span class="institution-tag">Washington College Mathematics</span>
+</div>
+
+In 1737, Leonhard Euler [@euler1737] discovered an astonishing identity connecting an infinite sum over all positive integers to an infinite product over all prime numbers $\mathbb{P}$.
+
+::: {.thm-box}
+<div class="box-title"><span class="badge badge-gold">Theorem 2</span> Euler's Product Formula</div>
+For any real $s > 1$:
+$$\sum_{n=1}^\infty \frac{1}{n^s} = \prod_{p \in \mathbb{P}} \frac{1}{1 - p^{-s}}$$
+:::
+
+### Proof Sketch (Fundamental Theorem of Arithmetic)
+By expanding each factor as a geometric series (since $|p^{-s}| < 1$):
+$$\prod_{p \in \mathbb{P}} \left( 1 + \frac{1}{p^s} + \frac{1}{p^{2s}} + \frac{1}{p^{3s}} + \cdots \right) = \sum_{k_1, k_2, \dots \ge 0} \frac{1}{(p_1^{k_1} p_2^{k_2} \cdots p_m^{k_m})^s}$$
+
+Every integer $n \ge 1$ factors uniquely into primes $p_1^{k_1} \cdots p_m^{k_m}$, so multiplying out the product yields each $\frac{1}{n^s}$ exactly once! $\quad \blacksquare$
+
+::: {.notes}
+Pause here. Euler's product is arguably one of the most beautiful equations in mathematics.
+It shows that arithmetic factorization into primes is equivalent to an analytic product formula.
+:::
+
+---
+
+## Riemann's 1859 Revolution
+
+<div class="slide-header">
+  <span>Complex Analysis</span>
+  <span class="institution-tag">Washington College Mathematics</span>
+</div>
+
+In his landmark 8-page paper, Bernhard Riemann [@riemann1859] allowed $s$ to be a **complex variable**: $s = \sigma + it \in \mathbb{C}$.
+
+::: {.columns}
+::: {.column width="52%"}
+### The Riemann Zeta Function
+For $\Re(s) > 1$:
+$$\zeta(s) := \sum_{n=1}^\infty \frac{1}{n^s} = \prod_{p \in \mathbb{P}} \frac{1}{1 - p^{-s}}$$
+
+### Analytic Continuation
+Riemann extended $\zeta(s)$ meromorphically to all $s \in \mathbb{C} \setminus \{1\}$ with a single simple pole at $s = 1$ of residue 1:
+$$\zeta(s) = 2^s \pi^{s-1} \sin\left(\frac{\pi s}{2}\right) \Gamma(1-s) \zeta(1-s)$$
+:::
+
+::: {.column width="48%"}
+::: {.takeaway-card}
+<div class="takeaway-title">Zeros of the Zeta Function</div>
+
+1. **Trivial Zeros**:
+   $$\zeta(s) = 0 \quad \text{at } s = -2, -4, -6, \dots$$
+   (arising from the poles of $\Gamma$ / zeros of $\sin$).
+
+2. **Non-Trivial Zeros**:
+   All lie within the **Critical Strip**:
+   $$\mathcal{S} = \{s \in \mathbb{C} : 0 \le \Re(s) \le 1\}$$
+:::
+:::
+:::
+
+::: {.notes}
+Explain what analytic continuation is for non-complex analysis majors: finding the unique analytic function that agrees on the initial domain but is defined on the whole plane.
+Note the functional equation relating $\zeta(s)$ and $\zeta(1-s)$.
+:::
+
+---
+
+## The Riemann Hypothesis & Explicit Formula
+
+<div class="slide-header">
+  <span>The Central Conjecture</span>
+  <span class="institution-tag">Washington College Mathematics</span>
+</div>
+
+::: {.takeaway-card}
+<div class="takeaway-title">🌟 The Riemann Hypothesis (1859)</div>
+All non-trivial zeros of $\zeta(s)$ lie precisely on the **critical line**:
+$$\Re(s) = \frac{1}{2}$$
+:::
+
+### The Explicit Formula: Primes are Harmonics of the Zeros!
+Riemann proved that the error between $\pi(x)$ and $\text{Li}(x)$ is governed directly by the zeros $\rho = \beta + i\gamma$:
+
+$$\psi(x) = x - \sum_{\rho : \zeta(\rho)=0} \frac{x^\rho}{\rho} - \ln(2\pi) - \frac{1}{2}\ln(1 - x^{-2})$$
+
+* The leading term $x$ gives the Prime Number Theorem.
+* Each zero $\rho$ adds an oscillating wave (a "sound wave") to the prime distribution!
+* If $\Re(\rho) = \frac{1}{2}$ for all non-trivial zeros, the error term is optimal: $|\pi(x) - \text{Li}(x)| = \mathcal{O}(\sqrt{x} \ln x)$.
+
+::: {.notes}
+This slide ties the entire presentation together conceptually.
+Metaphor: The non-trivial zeros are like the frequencies/harmonics of a musical instrument; primes are the notes produced by those frequencies.
+:::
+
+---
+
+## Key Lemma for Hadamard & de la Vallée Poussin
+
+<div class="slide-header">
+  <span>Proof Machinery</span>
+  <span class="institution-tag">Washington College Mathematics</span>
+</div>
+
+To prove the Prime Number Theorem, it suffices to prove that $\zeta(s)$ has **no zeros on the boundary line** $\Re(s) = 1$.
+
+::: {.lem-box}
+<div class="box-title"><span class="badge badge-gold">Key Lemma</span> Non-vanishing on $\Re(s) = 1$</div>
+For any real $t \ne 0$:
+$$\zeta(1 + it) \ne 0$$
+:::
+
+### The Ingenious Trigonometric Identity
+Mertens used the simple inequality: for any real $\theta$,
+$$3 + 4\cos(\theta) + \cos(2\theta) = 2(1 + \cos\theta)^2 \ge 0$$
+
+Applying this to the real part of $\ln \zeta(\sigma + it) = \sum_{p, m} \frac{\cos(m t \ln p)}{m p^{m\sigma}}$ gives:
+$$\zeta(\sigma)^3 \cdot |\zeta(\sigma + it)|^4 \cdot |\zeta(\sigma + 2it)| \ge 1 \quad \text{for } \sigma > 1$$
+
+If $\zeta(1 + it) = 0$, the zero of order 4 would overpower the order 1 pole of $\zeta(\sigma)$ as $\sigma \to 1^+$, creating a contradiction ($0 \ge 1$). $\quad \blacksquare$
+
+::: {.notes}
+Walk through the proof slowly. Point out how a simple high school trigonometry identity $2(1+\cos\theta)^2 \ge 0$ unlocks the proof of one of the deepest theorems in number theory!
+:::
+
+---
+
+## Interactive Chalkboard Demo {#chalkboard-demo}
+
+<div class="slide-header">
+  <span>Live Seminar Tools</span>
+  <span class="institution-tag">Washington College Mathematics</span>
+</div>
+
+::: {.columns}
+::: {.column width="55%"}
+### Live Presentation Superpower
+During your Math Seminar defense or talk, professors and peers will ask you to work through derivations.
+
+* Click the **pen icon** at the bottom-left corner (or press <kbd>C</kbd>) to toggle the **Live Chalkboard**.
+* Draw curves, write equations, or circle key steps directly on the slide!
+* Press <kbd>B</kbd> to toggle a blank whiteboard.
+* Press <kbd>DEL</kbd> or click the trash can to clear drawings.
+:::
+
+::: {.column width="45%"}
+::: {.thm-box}
+<div class="box-title">Practice Box: Draw Here!</div>
+$$\int_{-\infty}^\infty e^{-x^2} \, dx = \sqrt{\pi}$$
+
+$$\nabla \times (\nabla \times \mathbf{E}) = -\mu_0 \epsilon_0 \frac{\partial^2 \mathbf{E}}{\partial t^2}$$
+
+<p style="color: #64748b; font-size: 0.8em; margin-top: 15px;">
+Try pressing <kbd>C</kbd> to annotate this box!
+</p>
+:::
+:::
+:::
+
+::: {.notes}
+Demonstrate pressing 'C' now. Draw an arrow or circle around the Gaussian integral to show the audience how interactive slides can be.
+:::
+
+---
+
+## Computational Visualization with Code
+
+<div class="slide-header">
+  <span>Computation & Reproducibility</span>
+  <span class="institution-tag">Washington College Mathematics</span>
+</div>
+
+In modern math seminars, code chunks allow you to demonstrate computational experiments directly inside your slides:
+
+```python
+#| echo: true
+#| eval: false
+#| code-fold: show
+# Comparative approximation of prime counting function pi(x)
+import numpy as np
+
+def prime_estimates(x_vals):
+    results = []
+    for x in x_vals:
+        li_approx = np.log(x)           # Crude density estimate
+        pnt_ratio = x / np.log(x)       # PNT leading term
+        results.append((x, pnt_ratio))
+    return results
+
+print("Computed asymptotic bounds for capstone seminar data.")
+```
+
+::: {.takeaway-card}
+<div class="takeaway-title">💡 Why Embed Code in Seminar Slides?</div>
+* **Reproducibility**: Your plots, simulations, and numerical verifications are live and reproducible.
+* **Code Folding**: The `code-fold: show` setting lets you tuck code away during the talk so equations take center stage!
+:::
+
+::: {.notes}
+Explain to the audience that Quarto supports live execution of Python, R, Julia, and Observable JS directly in the presentation.
+:::
+
+---
+
+## Essential Presenter Shortcuts
+
+<div class="slide-header">
+  <span>Speaker Cheat-Sheet</span>
+  <span class="institution-tag">Washington College Mathematics</span>
+</div>
+
+| Shortcut | Action | When to Use During Your Seminar |
+|:---:|:---|:---|
+| <kbd>S</kbd> | **Speaker View** | Opens presenter console with timer, next slide, & private notes |
+| <kbd>O</kbd> / <kbd>ESC</kbd> | **Slide Overview** | Jump quickly between sections during Q&A |
+| <kbd>C</kbd> | **Chalkboard** | Draw diagrams, circle terms, or write derivations live |
+| <kbd>B</kbd> or <kbd>.</kbd> | **Blank Screen** | Direct audience attention back to you for discussion |
+| <kbd>F</kbd> | **Fullscreen** | Enter distraction-free presentation mode |
+| <kbd>?</kbd> | **Help Menu** | View all Reveal.js keyboard commands |
+
+::: {.takeaway-card style="margin-top: 20px;"}
+<div class="takeaway-title">🎓 Washington College Seminar Tip</div>
+Always open your slides 5 minutes early in the seminar room, hit <kbd>F</kbd> for fullscreen, and press <kbd>S</kbd> on your laptop so your timer starts when your advisor introduces you!
+:::
+
+::: {.notes}
+Reiterate the value of knowing the keyboard shortcuts so students don't need to fumble with the trackpad during their seminar defense.
+:::
+
+---
+
+## References & Further Reading
+
+<div class="slide-header">
+  <span>Literature Cited</span>
+  <span class="institution-tag">Washington College Mathematics</span>
+</div>
+
+::: {#refs}
+:::
+
+::: {.notes}
+References are automatically populated from references.bib.
+Students can cite papers using `[@key]` throughout their markdown text.
+:::
+
+---
+
+## Questions & Discussion {.center data-background-gradient="linear-gradient(135deg, #ffffff 0%, #fdf2f4 100%)"}
+
+<div style="text-align: center; margin-top: 1.5rem;">
+
+<h1 style="color: #862633; font-size: 2.4em; margin-bottom: 0.2em;">Thank You!</h1>
+
+<p style="font-size: 1.15em; font-weight: 500; color: #1e293b; margin-bottom: 1.5em;">
+Questions, comments, or discussions?
+</p>
+
+::: {.def-box style="display: inline-block; text-align: left; max-width: 600px; margin: 0 auto;"}
+<div class="box-title"><span class="badge badge-wc">Presenter Contact</span> Senior Capstone Experience</div>
+
+* **Author:** Alex Morgan '26
+* **Department:** Mathematics & Computer Science
+* **Institution:** Washington College, Chestertown, MD
+* **Repository:** [Washington-College/quarto-math-seminar-slides](https://github.com/Washington-College/quarto-math-seminar-slides)
+:::
+
+</div>
+
+::: {.notes}
+Wrap up your talk, thank your capstone advisor and the seminar coordinator, and invite questions from faculty and students.
+:::
