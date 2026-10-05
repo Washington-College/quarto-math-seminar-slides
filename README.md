@@ -2,7 +2,7 @@
 
 A modern, web-based presentation template designed for undergraduate students at **Washington College** preparing their **Senior Capstone Experience (SCE)** or **Mathematics Seminar** talks.
 
-[![Use This Template](https://img.shields.io/badge/Template-Use_This_Template-862633?style=for-the-badge&logo=github)](https://github.com/Washington-College/quarto-math-seminar-slides/generate)
+[![Washington College](https://img.shields.io/badge/Washington_College-Math_Seminar-862633?style=for-the-badge)](https://www.washcoll.edu)
 [![Open in GitHub Codespaces](https://img.shields.io/badge/Codespaces-Open_in_Cloud-blue?style=for-the-badge&logo=github)](https://codespaces.new/Washington-College/quarto-math-seminar-slides)
 [![Quarto](https://img.shields.io/badge/Built_With-Quarto_Reveal.js-007acc?style=for-the-badge&logo=quarto)](https://quarto.org)
 
@@ -15,36 +15,36 @@ A modern, web-based presentation template designed for undergraduate students at
 * ⚡ **Zero-Install Cloud Editing**: Full GitHub Codespaces support with Quarto, Python, and LaTeX pre-installed.
 * 🎙️ **Presenter Console**: Press <kbd>S</kbd> to unlock a synchronized dual-screen presenter view with live timer, preview, and private speaker notes.
 * ✏️ **Interactive Chalkboard**: Press <kbd>C</kbd> or click the pen icon to write or draw derivations live during your talk.
-* 🌐 **Automated GitHub Pages Publishing**: Push your changes to `main` and GitHub Actions automatically renders and hosts your slide deck online.
+* 🌐 **Automated GitHub Pages Publishing**: Push your changes to `main` and your slides update online automatically.
 * 📚 **Citation Ready**: Integrated BibTeX bibliography (`references.bib`) with 1-click toggling between APA and IEEE styles.
 
 ---
 
 ## 🚀 60-Second Quick Start
 
-### 1. Create Your Presentation
-Click the green **[Use this template](https://github.com/Washington-College/quarto-math-seminar-slides/generate)** button at the top of this repository (or click the badge above) to create your own copy.
+### 1. Open Your Personal Repository
+Your instructor will create your personal seminar repository for you under the Washington College organization (`Washington-College/quarto-math-seminar-slides-<your-username>`). Open that repository on GitHub to get started.
 
-### 2. Launch GitHub Codespaces
-Click **Code** $\to$ **Codespaces** $\to$ **Create codespace on main**. No local installation required!
+### 2. Launch GitHub Codespaces (Zero Setup)
+Click the green **Code** button $\to$ **Codespaces** $\to$ **Create codespace on main**. No local installation required!
 
-### 3. Preview Live
+### 3. Edit & Preview Live
 In the terminal, run:
 ```bash
 quarto preview index.qmd
 ```
-Your presentation will open in the preview pane. Edits in `index.qmd` reload automatically on save!
+Your presentation will open in the preview pane. Any edits you make in `index.qmd` reload automatically on save!
 
 ### 4. Publish to the Web
-Render your slides and push:
+Render your slides and push your changes:
 ```bash
 quarto render
 git add .
 git commit -m "Update my math seminar slides"
 git push origin main
 ```
-GitHub Pages is pre-configured to serve directly from the `/docs` folder on `main`. Your updated slides go live automatically within seconds!
-*(Alternatively, you can switch to GitHub Actions under **Settings** $\to$ **Pages** if you prefer automated CI builds).*
+GitHub Pages is pre-configured to serve directly from the `/docs` folder on `main`. Your updated slides go live automatically within seconds at:
+`https://washington-college.github.io/<your-repo-name>/`
 
 ---
 
